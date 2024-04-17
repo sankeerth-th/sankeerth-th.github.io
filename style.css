@@ -1,0 +1,238 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    background: #f8f8f7;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+header {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    flex-wrap: wrap;
+}
+.navbar-title {
+    flex-basis: 100%; /* Make title full width */
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Spacing between title and menu */
+}
+#home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: calc(80px + 20px); /* Increased space to prevent overlap with the navbar */
+    gap: 50px; /* Adds space between text and image */
+}
+.home-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.intro-text {
+    flex-basis: 50%;
+}
+.intro {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu li {
+    padding: 0 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: #007aff;
+}
+
+.social-icons a {
+    color: #333;
+    margin-left: 15px;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+.social-icons a:hover {
+    color: #007aff;
+}
+section {
+    margin: 20px 0;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+h2 {
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 5px;
+}
+
+h3 {
+    margin-top: 15px;
+}
+
+ul {
+    margin-top: 10px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    background: #333;
+    color: white;
+}
+
+/* Animations and Transitions */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.menu a {
+    position: relative;
+}
+
+.menu a:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #dfe6e9;
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu a:hover:after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.profile-image-container {
+    display: flex;
+    justify-content: center; /* Centers the profile image horizontally */
+    margin-top: -50px; /* Adjusts the image's position relative to the header */
+}
+
+.profile-image {
+    width: auto; /* Set to full width of the container */
+    max-width: 50%; /* Max width can be set as needed */
+    height: auto;
+    aspect-ratio: 9 / 16; /* Aspect ratio for a "reel" look - adjust as needed */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow for depth */
+    object-fit: contain; /* Ensure the image covers the area without distortion */
+}
+.mail-button {
+    display: inline-block;
+    background-color: #007aff; /* Apple blue */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px; /* Rounded corners for the button */
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px; /* Spacing from the text */
+    box-shadow: 0px 5px 15px rgba(0, 120, 255, 0.6); /* Stylish shadow for the button */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for button press effect */
+}
+.mail-button:hover {
+    transform: translateY(-2px); /* Slight raise effect on hover */
+    box-shadow: 0px 7px 20px rgba(0, 120, 255, 0.8); /* Larger shadow on hover */
+}
+/* When the user scrolls down, the image size decreases */
+window.addEventListener('scroll', function() {
+    const scrollPosition = window.scrollY;
+    const profileImage = document.querySelector('.profile-image');
+    
+    if (scrollPosition > 100) { 
+        profileImage.style.transform = 'scale(0.8)'; 
+    } else {
+        profileImage.style.transform = 'scale(1)'; 
+    }
+});
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu,
+    .social-icons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .menu li {
+        padding: 10px 0;
+    }
+    .home-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .profile-image {
+        max-width: 70%; /* Larger width on smaller screens for visibility */
+    }
+
+    .intro-text {
+        flex-basis: 100%;
+    }
+}
